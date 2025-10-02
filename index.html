@@ -13,22 +13,76 @@
         
         body {
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            background: linear-gradient(135deg, #1e3c72 0%, #2a5298 50%, #7e8ba3 100%);
             min-height: 100vh;
-            padding: 20px;
+            padding: 0;
+        }
+
+        header {
+            background: linear-gradient(135deg, #0f2027 0%, #203a43 50%, #2c5364 100%);
+            padding: 20px 0;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.3);
+            margin-bottom: 30px;
+        }
+
+        .header-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .logo-icon {
+            font-size: 2.5em;
+        }
+
+        .logo-text h1 {
+            color: #fff;
+            font-size: 1.8em;
+            margin: 0;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+
+        .logo-text p {
+            color: #a8c5e6;
+            font-size: 0.9em;
+            margin: 5px 0 0 0;
+        }
+
+        .header-nav {
+            display: flex;
+            gap: 15px;
+        }
+
+        .header-btn {
+            padding: 10px 20px;
+            background: rgba(255,255,255,0.1);
+            color: white;
+            border: 2px solid rgba(255,255,255,0.3);
+            border-radius: 25px;
+            text-decoration: none;
+            font-size: 0.9em;
+            transition: all 0.3s;
+        }
+
+        .header-btn:hover {
+            background: rgba(255,255,255,0.2);
+            border-color: rgba(255,255,255,0.5);
+            transform: translateY(-2px);
         }
         
         .container {
             max-width: 1200px;
             margin: 0 auto;
-        }
-        
-        h1 {
-            text-align: center;
-            color: white;
-            margin-bottom: 30px;
-            font-size: 2.5em;
-            text-shadow: 2px 2px 4px rgba(0,0,0,0.2);
+            padding: 0 20px 40px 20px;
         }
         
         .tabs {
@@ -55,7 +109,7 @@
         
         .tab.active {
             background: white;
-            color: #667eea;
+            color: #2a5298;
         }
         
         .content {
@@ -100,7 +154,7 @@
         
         input:focus, textarea:focus {
             outline: none;
-            border-color: #667eea;
+            border-color: #2a5298;
         }
         
         textarea {
@@ -110,7 +164,7 @@
         
         .btn {
             padding: 12px 30px;
-            background: #667eea;
+            background: linear-gradient(135deg, #2a5298 0%, #1e3c72 100%);
             color: white;
             border: none;
             border-radius: 8px;
@@ -121,9 +175,9 @@
         }
         
         .btn:hover {
-            background: #5568d3;
+            background: linear-gradient(135deg, #1e3c72 0%, #2a5298 100%);
             transform: translateY(-2px);
-            box-shadow: 0 5px 15px rgba(102, 126, 234, 0.4);
+            box-shadow: 0 5px 15px rgba(30, 60, 114, 0.4);
         }
         
         .btn:active {
@@ -158,9 +212,9 @@
         }
         
         .sort-btn.active {
-            background: #667eea;
+            background: #2a5298;
             color: white;
-            border-color: #667eea;
+            border-color: #2a5298;
         }
         
         .cd-list {
@@ -172,7 +226,7 @@
             background: #f8f9fa;
             padding: 20px;
             border-radius: 10px;
-            border-left: 4px solid #667eea;
+            border-left: 4px solid #2a5298;
             transition: transform 0.3s, box-shadow 0.3s;
         }
         
@@ -234,7 +288,7 @@
         .loading {
             text-align: center;
             padding: 40px;
-            color: #667eea;
+            color: #2a5298;
             font-size: 1.2em;
         }
 
@@ -258,9 +312,21 @@
     </style>
 </head>
 <body>
+    <header>
+        <div class="header-content">
+            <div class="logo">
+                <div class="logo-text">
+                    <h1>CD情報共有サイト</h1>
+                    <p>イベントのCD情報を共有しよう</p>
+                </div>
+            </div>
+            <nav class="header-nav">
+                <a href="#" class="header-btn">ℹ️ 使い方</a>
+            </nav>
+        </div>
+    </header>
+
     <div class="container">
-        <h1>🎵 CD情報共有サイト</h1>
-        
         <div class="tabs">
             <button class="tab active" onclick="switchTab('form')">情報登録</button>
             <button class="tab" onclick="switchTab('list')">CD一覧</button>
