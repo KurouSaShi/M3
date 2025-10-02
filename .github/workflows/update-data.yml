@@ -1,0 +1,61 @@
+name: Update CD Data
+
+on:
+  issues:
+    types: [opened]
+
+jobs:
+  update-data:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+      issues: write
+    
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+      
+      - name: Check if CD info issue
+        id: check
+        run: |
+          if [[ "${{ github.event.issue.title }}" == CD-INFO:* ]]; then
+            echo "is_cd_info=true" >> $GITHUB_OUTPUT
+          else
+            echo "is_cd_info=false" >> $GITHUB_OUTPUT
+          fi
+      
+      - name: Update JSON
+        if: steps.check.outputs.is_cd_info == 'true'
+        run: |
+          echo '${{ github.event.issue.body }}' > temp.json
+          
+          if [ ! -f data/cds.json ]; then
+            echo "[]" > data/cds.json
+          fi
+          
+          jq '. += [input]' data/cds.json temp.json > data/cds.json.tmp
+          mv data/cds.json.tmp data/cds.json
+          
+          git config user.name "GitHub Actions"
+          git config user.email "actions@github.com"
+          git add data/cds.json
+          git commit -m "Add CD: ${{ github.event.issue.title }}"
+          git push
+      
+      - name: Close issue
+        if: steps.check.outputs.is_cd_info == 'true'
+        uses: actions/github-script@v6
+        with:
+          script: |
+            github.rest.issues.update({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              issue_number: context.issue.number,
+              state: 'closed'
+            })
+            github.rest.issues.createComment({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              issue_number: context.issue.number,
+              body: '✅ CD情報をデータベースに追加しました！'
+            })
