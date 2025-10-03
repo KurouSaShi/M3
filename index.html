@@ -18,51 +18,59 @@
             padding: 0;
         }
 
-        header {
-            background: linear-gradient(135deg, #0f2027 0%, #203a43 50%, #2c5364 100%);
-            padding: 20px 0;
-            box-shadow: 0 4px 20px rgba(0,0,0,0.3);
-            margin-bottom: 30px;
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
         }
 
-        .header-content {
+        h1 {
+            text-align: center;
+            color: white;
+            margin-bottom: 30px;
+            font-size: 2.5em;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.2);
+        }
+
+        footer {
+            background: linear-gradient(135deg, #0f2027 0%, #203a43 50%, #2c5364 100%);
+            padding: 30px 0;
+            margin-top: 50px;
+            box-shadow: 0 -4px 20px rgba(0,0,0,0.3);
+        }
+
+        .footer-content {
             max-width: 1200px;
             margin: 0 auto;
             padding: 0 20px;
             display: flex;
-            align-items: center;
             justify-content: space-between;
-        }
-
-        .logo {
-            display: flex;
             align-items: center;
-            gap: 15px;
+            flex-wrap: wrap;
+            gap: 20px;
         }
 
-        .logo-icon {
-            font-size: 2.5em;
-        }
-
-        .logo-text h1 {
-            color: #fff;
-            font-size: 1.8em;
-            margin: 0;
-            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
-        }
-
-        .logo-text p {
+        .footer-info {
             color: #a8c5e6;
+        }
+
+        .footer-info h3 {
+            color: #fff;
+            font-size: 1.2em;
+            margin-bottom: 10px;
+        }
+
+        .footer-info p {
             font-size: 0.9em;
-            margin: 5px 0 0 0;
+            line-height: 1.6;
         }
 
-        .header-nav {
+        .footer-links {
             display: flex;
-            gap: 15px;
+            gap: 20px;
         }
 
-        .header-btn {
+        .footer-link {
             padding: 10px 20px;
             background: rgba(255,255,255,0.1);
             color: white;
@@ -73,16 +81,19 @@
             transition: all 0.3s;
         }
 
-        .header-btn:hover {
+        .footer-link:hover {
             background: rgba(255,255,255,0.2);
             border-color: rgba(255,255,255,0.5);
             transform: translateY(-2px);
         }
-        
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 20px 40px 20px;
+
+        .footer-bottom {
+            text-align: center;
+            color: #7e8ba3;
+            font-size: 0.85em;
+            margin-top: 20px;
+            padding-top: 20px;
+            border-top: 1px solid rgba(255,255,255,0.1);
         }
         
         .tabs {
@@ -312,21 +323,9 @@
     </style>
 </head>
 <body>
-    <header>
-        <div class="header-content">
-            <div class="logo">
-                <div class="logo-text">
-                    <h1>CD情報共有サイト</h1>
-                    <p>イベントのCD情報を共有しよう</p>
-                </div>
-            </div>
-            <nav class="header-nav">
-                <a href="#" class="header-btn">ℹ️ 使い方</a>
-            </nav>
-        </div>
-    </header>
-
     <div class="container">
+        <h1>🎵 CD情報共有サイト</h1>
+        
         <div class="tabs">
             <button class="tab active" onclick="switchTab('form')">情報登録</button>
             <button class="tab" onclick="switchTab('list')">CD一覧</button>
@@ -384,6 +383,14 @@
             </div>
         </div>
     </div>
+
+    <footer>
+            <div class="footer-bottom">
+               削除依頼はX:@KurouSha_まで<br>
+                M3公式とは関係ありません。
+            </div>
+        </div>
+    </footer>
 
     <script>
         // ========================================
